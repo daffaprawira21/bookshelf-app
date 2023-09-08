@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBookShelf</title>
+    <link rel="icon" href="img/logo-transparent.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/3cfdc6935f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="site-logo">
+        <img src="img/logo-black.png" alt="site logo" />
+      </div>
+      <nav class="navbar">
+        <a href="#" id="light-mode"
+          ><i class="feather-32" data-feather="sun"></i
+        ></a>
+        <a href="#" id="github"
+          ><img src="img/icons8-github-32.png" alt="github"
+        /></a>
+      </nav>
+    </header>
+    <main>
+      <section class="main-page">
+        <div class="hero">
+          <img src="img/hero.jpg" alt="library" />
+        </div>
+        <div class="hero-text">
+          <blockquote>
+            <h1><i>"A room without books is like a body without a soul"</i></h1>
+            <p>-Marcus Cicero.</p>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="manage-book">
+        <div class="card hide">
+          <h2>Input New Book</h2>
+          <form id="input-book">
+            <div class="input">
+              <label for="input-title">Title</label>
+              <input
+                id="input-title"
+                type="text"
+                placeholder="Ikigai"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="input-author">Author</label>
+              <input
+                id="input-author"
+                type="text"
+                placeholder="Hector Garcia"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="input-year">Year</label>
+              <input
+                id="input-year"
+                type="number"
+                placeholder="2016"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="input-link">Book cover link</label>
+              <input
+                id="input-link"
+                type="text"
+                placeholder="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
+              />
+            </div>
+            <div class="input_inline">
+              <input id="inputBookIsComplete" type="checkbox" />
+              <label for="inputBookIsComplete">Already read?</label>
+            </div>
+            <button id="submit-book" type="submit">Save</button>
+          </form>
+        </div>
+        <div class="card">
+          <h2>Book List</h2>
+          <div class="mini-card">
+            <div class="card-book">
+              <div class="cover">
+                <img
+                  src="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
+                  alt="Avatar"
+                />
+              </div>
+              <div class="detail-book">
+                <h3><b>Ikigai</b></h3>
+                <div class="line"></div>
+                <p>Author: Naruto</p>
+                <p>Year: 2024</p>
+              </div>
+            </div>
+            <div class="card-book">
+              <div class="cover">
+                <img
+                  src="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
+                  alt="Avatar"
+                />
+              </div>
+              <div class="detail-book">
+                <h3><b>Ikigai</b></h3>
+                <div class="line"></div>
+                <p>Author: Naruto</p>
+                <p>Year: 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Finished Read</h2>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>created by daffaprawira. | &copy; 2023.</p>
+    </footer>
+    <script>
+      feather.replace();
+    </script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
