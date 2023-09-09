@@ -83,16 +83,19 @@ nav.navbar a img {
   padding: 1rem;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 30%;
   top: 25%;
   left: 24px;
   font-family: var(--ff-code-pro);
   color: #fff;
 }
-.hero-text blockquote h1 {
+.hero-text blockquote p {
+  font-weight: 400px;
   font-size: 2.4rem;
 }
-.hero-text blockquote p {
+.hero-text blockquote span {
+  line-height: 4.2rem;
   font-size: 1.4rem;
 }
 
@@ -114,7 +117,8 @@ nav.navbar a img {
   font-family: var(--ff-raleway);
   background-color: #131313;
   color: #eee0c9;
-  box-shadow: 2px 4px 4px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 .manage-book .card h2 {
   padding-left: 5px;
@@ -147,20 +151,19 @@ form .input input {
 
 button#submit-book {
   width: 100%;
-  background-color: #010101;
-  color: #eee0c9;
+  background-color: #eee0c9;
   border-radius: 10px;
   border-style: none;
   margin-top: 1rem;
   padding: 0.5rem;
   font-size: 14px;
-  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
   transition: 0.25s ease;
 }
 button#submit-book:hover {
-  width: 100%;
+  background-color: #010101;
   color: #fff;
-  box-shadow: 3px 3px 4px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 25px 80px rgba(0, 0, 0, 0.15);
 }
 
 .card .mini-card {
@@ -175,11 +178,18 @@ button#submit-book:hover {
   justify-content: space-around;
   height: 150px;
   border-radius: 5px;
-  border: 3px solid #121212;
+  box-shadow: 0 1px 3px 0 rgba(238, 224, 201, 0.1),
+    0 1px 2px -1px rgba(238, 224, 201, 0.1);
   font-family: var(--ff-raleway);
   background-color: white;
   color: #010101;
   overflow: hidden;
+  transition: 0.5s ease;
+}
+
+.card .mini-card .card-book:hover {
+  box-shadow: rgba(238, 224, 201, 0.16) 0px 10px 36px 0px,
+    rgba(238, 224, 201, 0.06) 0px 0px 0px 1px;
 }
 .card .mini-card .card-book .cover {
   width: 50%;
@@ -232,10 +242,10 @@ footer p {
     height: 56%;
     bottom: -18%;
   }
-  .hero-text blockquote h1 {
+  .hero-text blockquote p {
     font-size: 2.2rem;
   }
-  .hero-text blockquote p {
+  .hero-text blockquote span {
     font-size: 1.2rem;
   }
   .manage-book .card {
@@ -254,10 +264,10 @@ footer p {
   .hero-text {
     width: 35%;
   }
-  .hero-text blockquote h1 {
+  .hero-text blockquote p {
     font-size: 1.8rem;
   }
-  .hero-text blockquote p {
+  .hero-text blockquote span {
     font-size: 1rem;
   }
   .manage-book {
@@ -312,10 +322,10 @@ footer p {
   .hero-text {
     width: 50%;
   }
-  .hero-text blockquote h1 {
+  .hero-text blockquote p {
     font-size: 1.4rem;
   }
-  .hero-text blockquote p {
+  .hero-text blockquote span {
     font-size: 0.6rem;
   }
   .site-logo img {
