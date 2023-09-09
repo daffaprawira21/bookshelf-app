@@ -10,7 +10,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* text-decoration: none; */
+  text-decoration: none;
 }
 
 html {
@@ -98,17 +98,89 @@ nav.navbar a img {
   line-height: 4.2rem;
   font-size: 1.4rem;
 }
+.manage-btn {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 6rem 4rem 2rem;
+  position: relative;
+}
+
+/* .new-btn .new, */
+.manage-btn .new {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+}
+.manage-btn .btn {
+  background-color: #131313;
+  color: #eee0c9;
+  transition: 0.5s ease;
+}
+.manage-btn .btn:hover {
+  background-color: #eee0c9;
+  color: #131313;
+}
+/* .new-btn .btn {
+  background-color: #eee0c9;
+  color: black;
+  transition: 0.5s ease;
+}
+.new-btn .btn:hover {
+  background-color: #131313;
+  color: #eee0c9;
+} */
+
+.search-container {
+  background-color: #eee0c9;
+  width: 25%;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+}
+
+.search-container .search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #2e2e2e;
+  padding: 4px;
+  font-size: 16px;
+}
+.search-container .search-input::placeholder {
+  font-size: 18px;
+}
+.search-container .search-btn {
+  color: #2e2e2e;
+}
 
 .hide {
   flex-basis: 50%;
+  /* display: none; */
 }
 .manage-book {
   display: flex;
   justify-content: space-around;
   flex-flow: row nowrap;
   gap: 1.5rem;
-  padding: 8rem 4rem;
-  border: 1px solid black;
+  padding: 2rem 4rem 2rem;
 }
 .manage-book .card {
   width: 100%;
@@ -149,7 +221,7 @@ form .input input {
   outline: none;
 }
 
-button#submit-book {
+#submit-book {
   width: 100%;
   background-color: #eee0c9;
   border-radius: 10px;
@@ -160,7 +232,7 @@ button#submit-book {
   box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
   transition: 0.25s ease;
 }
-button#submit-book:hover {
+#submit-book:hover {
   background-color: #010101;
   color: #fff;
   box-shadow: 0px 25px 80px rgba(0, 0, 0, 0.15);
@@ -168,15 +240,14 @@ button#submit-book:hover {
 
 .card .mini-card {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 .card .mini-card .card-book {
   display: flex;
   flex: row nowrap;
-  justify-content: space-around;
-  height: 150px;
+  justify-content: flex-start;
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(238, 224, 201, 0.1),
     0 1px 2px -1px rgba(238, 224, 201, 0.1);
@@ -191,33 +262,53 @@ button#submit-book:hover {
   box-shadow: rgba(238, 224, 201, 0.16) 0px 10px 36px 0px,
     rgba(238, 224, 201, 0.06) 0px 0px 0px 1px;
 }
-.card .mini-card .card-book .cover {
+.mini-card .card-book .cover {
   width: 50%;
 }
-.card .mini-card .card-book .cover img {
+.mini-card .card-book .cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
-.card .mini-card .card-book .detail-book {
+.mini-card .card-book .detail-book {
+  display: block;
   width: 50%;
-  padding: 1rem 0.5rem;
-  line-height: 2rem;
+  padding: 1rem;
   font-family: var(--ff-poppins);
 }
-.card .mini-card .card-book .detail-book .line {
-  height: 2px;
-  width: 100%;
-  margin-bottom: 4px;
-  border-radius: 10px;
-  background-color: #262626;
-  align-self: center;
-}
-.card .mini-card .card-book .detail-book p {
+
+.card-book .detail-book p {
+  padding: 2px 0;
   font-size: 10px;
-  line-height: 14px;
 }
 
+.card-book .detail-book .action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6rem;
+  gap: 5px;
+}
+.detail-book .action .btn-icon {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #131313;
+}
+.detail-book .action .btn-icon:hover {
+  background-color: #262626;
+}
+.action .btn-edit {
+  color: orange;
+}
+.action .btn-check,
+.action .btn-undo {
+  color: greenyellow;
+}
+.action .btn-remove {
+  color: red;
+}
 /* Footer Section */
 footer {
   display: flex;
@@ -242,7 +333,6 @@ footer p {
     height: 56%;
     bottom: -18%;
   }
-
   .hero-text {
     width: 36%;
   }
@@ -253,14 +343,23 @@ footer p {
     line-height: normal;
     font-size: 1.2rem;
   }
-  .manage-book .card {
-    flex-basis: 50%;
-  }
-  .card .mini-card {
+  .manage-book {
     flex-flow: row wrap;
   }
-  .card .mini-card .card-book {
-    width: 100%;
+  .manage-book .card {
+    flex-basis: 60%;
+  }
+  .search-container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .manage-book .card {
+    flex-basis: 70%;
+  }
+  .search-container {
+    width: 70%;
   }
 }
 
@@ -275,55 +374,41 @@ footer p {
   .hero-text blockquote cite {
     font-size: 1rem;
   }
-  .manage-book {
-    flex-flow: row wrap;
+}
+
+/* Media Query Max 600px */
+@media screen and (max-width: 600px) {
+  .hero-text {
+    width: 48%;
+  }
+  .site-logo img {
+    height: 24px;
+  }
+  nav.navbar a .feather-32,
+  nav.navbar a img {
+    height: 24px;
+    width: 24px;
   }
   .manage-book .card {
-    flex-basis: 70%;
+    flex-basis: 90%;
   }
-  .card .mini-card .card-book {
-    height: 50%;
+  .search-container {
+    width: 90%;
   }
   .card .mini-card .card-book .detail-book {
-    line-height: 2.6rem;
+    line-height: 2.2rem;
   }
   .card .mini-card .card-book .detail-book h3 {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   .card .mini-card .card-book .detail-book p {
-    font-size: 0.8rem;
-    line-height: 1.4rem;
-  }
-  /* Media Query Max 600px */
-  @media screen and (max-width: 600px) {
-    .hero-text {
-      width: 48%;
-    }
-    .site-logo img {
-      height: 24px;
-    }
-    nav.navbar a .feather-32,
-    nav.navbar a img {
-      height: 24px;
-      width: 24px;
-    }
-    .manage-book .card {
-      flex-basis: 90%;
-    }
-    .card .mini-card .card-book .detail-book {
-      line-height: 2.2rem;
-    }
-    .card .mini-card .card-book .detail-book h3 {
-      font-size: 1.2rem;
-    }
-    .card .mini-card .card-book .detail-book p {
-      font-size: 0.6rem;
-      line-height: 1.2rem;
-    }
+    font-size: 0.6rem;
+    line-height: 1.2rem;
   }
 }
-/* Media Query Max 400px */
-@media screen and (max-width: 400px) {
+
+/* Media Query Max 480px */
+@media screen and (max-width: 480px) {
   .hero-text {
     width: 56%;
   }
@@ -346,17 +431,9 @@ footer p {
     padding: 2rem;
   }
   .manage-book .card {
-    flex-basis: 100%;
     padding: 1.5rem;
   }
-  .card .mini-card .card-book .detail-book {
-    line-height: 1.8rem;
-  }
-  .card .mini-card .card-book .detail-book h3 {
-    font-size: 0.6rem;
-  }
-  .card .mini-card .card-book .detail-book p {
-    font-size: 0.4rem;
-    line-height: 0.8rem;
+  .search-container {
+    width: 100%;
   }
 }
