@@ -228,10 +228,10 @@ footer p {
 
 /* Media Query Max 1200px */
 @media screen and (max-width: 1200px) {
-  /* .hero::after {
+  .hero::after {
     height: 56%;
     bottom: -18%;
-  } */
+  }
   .hero-text blockquote h1 {
     font-size: 2.2rem;
   }
@@ -251,10 +251,6 @@ footer p {
 
 /* Media Query Max 768px */
 @media screen and (max-width: 768px) {
-  .hero::after {
-    height: 56%;
-    bottom: -18%;
-  }
   .hero-text {
     width: 35%;
   }
