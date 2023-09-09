@@ -80,7 +80,7 @@ nav.navbar a img {
 }
 .hero-text {
   position: absolute;
-  padding: 1rem;
+  padding: 1rem 1.8rem;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -88,14 +88,14 @@ nav.navbar a img {
   top: 25%;
   left: 24px;
   font-family: var(--ff-code-pro);
+  font-weight: 400px;
   color: #fff;
 }
 .hero-text blockquote p {
-  font-weight: 400px;
   font-size: 2.4rem;
 }
-.hero-text blockquote span {
-  /* line-height: 4.2rem; */
+.hero-text blockquote cite {
+  line-height: 4.2rem;
   font-size: 1.4rem;
 }
 
@@ -242,10 +242,15 @@ footer p {
     height: 56%;
     bottom: -18%;
   }
+
+  .hero-text {
+    width: 36%;
+  }
   .hero-text blockquote p {
     font-size: 2.2rem;
   }
-  .hero-text blockquote span {
+  .hero-text blockquote cite {
+    line-height: normal;
     font-size: 1.2rem;
   }
   .manage-book .card {
@@ -262,12 +267,12 @@ footer p {
 /* Media Query Max 768px */
 @media screen and (max-width: 768px) {
   .hero-text {
-    width: 35%;
+    width: 42%;
   }
   .hero-text blockquote p {
     font-size: 1.8rem;
   }
-  .hero-text blockquote span {
+  .hero-text blockquote cite {
     font-size: 1rem;
   }
   .manage-book {
@@ -292,7 +297,7 @@ footer p {
   /* Media Query Max 600px */
   @media screen and (max-width: 600px) {
     .hero-text {
-      width: 45%;
+      width: 48%;
     }
     .site-logo img {
       height: 24px;
@@ -320,12 +325,12 @@ footer p {
 /* Media Query Max 400px */
 @media screen and (max-width: 400px) {
   .hero-text {
-    width: 50%;
+    width: 56%;
   }
   .hero-text blockquote p {
     font-size: 1.4rem;
   }
-  .hero-text blockquote span {
+  .hero-text blockquote cite {
     font-size: 0.6rem;
   }
   .site-logo img {
