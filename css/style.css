@@ -246,7 +246,8 @@ form .input input {
 }
 .card .mini-card .card-book {
   display: flex;
-  flex: row nowrap;
+  flex-flow: row wrap;
+  width: 48%;
   justify-content: flex-start;
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(238, 224, 201, 0.1),
@@ -263,7 +264,7 @@ form .input input {
     rgba(238, 224, 201, 0.06) 0px 0px 0px 1px;
 }
 .mini-card .card-book .cover {
-  width: 50%;
+  width: 55%;
 }
 .mini-card .card-book .cover img {
   width: 100%;
@@ -273,7 +274,7 @@ form .input input {
 }
 .mini-card .card-book .detail-book {
   display: block;
-  width: 50%;
+  width: 45%;
   padding: 1rem;
   font-family: var(--ff-poppins);
 }
@@ -289,14 +290,21 @@ form .input input {
   margin-top: 6rem;
   gap: 5px;
 }
-.detail-book .action .btn-icon {
+
+.detail-book .action .btn-edit,
+.btn-check,
+.btn-remove,
+.btn-undo {
   border: none;
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
   background-color: #131313;
 }
-.detail-book .action .btn-icon:hover {
+.detail-book .action .btn-edit:hover,
+.btn-check:hover,
+.btn-remove:hover,
+.btn-undo:hover {
   background-color: #262626;
 }
 .action .btn-edit {
@@ -365,6 +373,9 @@ footer p {
 
 /* Media Query Max 768px */
 @media screen and (max-width: 768px) {
+  .card .mini-card .card-book {
+    width: 100%;
+  }
   .hero-text {
     width: 42%;
   }
@@ -373,6 +384,12 @@ footer p {
   }
   .hero-text blockquote cite {
     font-size: 1rem;
+  }
+  .card-book .detail-book .action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12rem;
+    gap: 5px;
   }
 }
 

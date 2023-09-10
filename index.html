@@ -33,7 +33,7 @@
         <a href="#" id="light-mode"
           ><i class="feather-32" data-feather="sun"></i
         ></a>
-        <a href="#" id="github"
+        <a href="https://github.com/daffaprawira21" id="github" target="_blank"
           ><img src="img/icons8-github-32.png" alt="github"
         /></a>
       </nav>
@@ -110,6 +110,7 @@
                 id="input-link"
                 type="text"
                 placeholder="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
+                required
               />
             </div>
             <div class="input_inline">
@@ -121,8 +122,8 @@
         </div>
         <div class="card">
           <h2>Book List</h2>
-          <div class="mini-card">
-            <div class="card-book">
+          <div class="mini-card" id="books">
+            <!-- <div id="book-<book_id>" class="card-book">
               <div class="cover">
                 <img
                   src="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
@@ -145,13 +146,13 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="card">
           <h2>Finished Read</h2>
-          <div class="mini-card">
-            <div class="card-book">
+          <div class="mini-card" id="completedBook">
+            <!-- <div class="card-book">
               <div class="cover">
                 <img
                   src="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
@@ -174,7 +175,7 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -185,6 +186,10 @@
     <script>
       feather.replace();
     </script>
+    <!-- sweetalert cdn -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- javascript -->
     <script src="js/main.js"></script>
   </body>
 </html>
