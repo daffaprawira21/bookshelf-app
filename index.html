@@ -45,13 +45,35 @@
         </div>
         <div class="hero-text">
           <blockquote>
-            <h1><i>"A room without books is like a body without a soul"</i></h1>
-            <p>-Marcus Cicero.</p>
+            <p>"A room without books is like a body without a soul"</p>
+            <cite>-Marcus Cicero</cite>
           </blockquote>
+        </div>
+        <div class="manage-btn">
+          <a href="#manage-book" class="btn new">Manage Now</a>
         </div>
       </section>
 
-      <section class="manage-book">
+      <section class="menu">
+        <!-- <div class="new-btn">
+          <button class="btn new">
+            <i class="fa-solid fa-plus"></i> New Book
+          </button>
+        </div> -->
+        <div class="search-container">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search..."
+            class="search-input"
+          />
+          <a href="#" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="manage-book" id="manage-book">
         <div class="card hide">
           <h2>Input New Book</h2>
           <form id="input-book">
@@ -108,12 +130,27 @@
                 />
               </div>
               <div class="detail-book">
-                <h3><b>Ikigai</b></h3>
-                <div class="line"></div>
+                <h3>Ikigai</h3>
                 <p>Author: Naruto</p>
                 <p>Year: 2024</p>
+                <div class="action">
+                  <button class="btn-edit btn-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button class="btn-check btn-icon">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="btn-remove btn-icon">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Finished Read</h2>
+          <div class="mini-card">
             <div class="card-book">
               <div class="cover">
                 <img
@@ -122,16 +159,23 @@
                 />
               </div>
               <div class="detail-book">
-                <h3><b>Ikigai</b></h3>
-                <div class="line"></div>
+                <h3>Ikigai</h3>
                 <p>Author: Naruto</p>
                 <p>Year: 2024</p>
+                <div class="action">
+                  <button class="btn-edit btn-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button class="btn-undo btn-icon">
+                    <i class="fa-solid fa-rotate-left"></i>
+                  </button>
+                  <button class="btn-remove btn-icon">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <h2>Finished Read</h2>
         </div>
       </section>
     </main>
