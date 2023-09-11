@@ -33,6 +33,14 @@ function loadDataFromStorage() {
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
+function removeHash() {
+  history.pushState(
+    "",
+    document.title,
+    window.location.pathname + window.location.search
+  );
+}
+
 function generateId() {
   return +new Date();
 }
@@ -176,7 +184,7 @@ function editBook(bookId) {
 
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
-    formEditBook.reset();
+    removeHash();
     sectionEdit.style.display = "none";
   });
 
