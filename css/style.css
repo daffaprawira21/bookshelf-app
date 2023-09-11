@@ -308,7 +308,7 @@ form .input input {
 .card-book .detail-book .action {
   display: flex;
   justify-content: flex-end;
-  margin-top: 5.5rem;
+  margin-top: 5rem;
   gap: 0.5rem;
 }
 
@@ -374,9 +374,16 @@ footer p {
   }
   .manage-book {
     flex-flow: row wrap;
+    padding: 2rem;
   }
   .manage-book .card {
     flex-basis: 60%;
+  }
+  .mini-card .card-book .cover {
+    width: 28%;
+  }
+  .mini-card .card-book .detail-book {
+    width: 72%;
   }
   .search-container {
     width: 60%;
@@ -386,18 +393,21 @@ footer p {
 /* Media Query Max 992px */
 @media screen and (max-width: 992px) {
   .manage-book .card {
-    flex-basis: 70%;
+    flex-basis: 75%;
   }
   .search-container {
     width: 70%;
+  }
+  .mini-card .card-book .cover {
+    width: 26%;
+  }
+  .mini-card .card-book .detail-book {
+    width: 74%;
   }
 }
 
 /* Media Query Max 768px */
 @media screen and (max-width: 768px) {
-  .card .mini-card .card-book {
-    width: 100%;
-  }
   .hero-text {
     width: 42%;
   }
@@ -406,6 +416,18 @@ footer p {
   }
   .hero-text blockquote cite {
     font-size: 1rem;
+  }
+  .manage-book .card {
+    flex-basis: 85%;
+  }
+  .mini-card .card-book {
+    height: 220px;
+  }
+  .mini-card .card-book .cover {
+    width: 30%;
+  }
+  .mini-card .card-book .detail-book {
+    width: 70%;
   }
 }
 
@@ -423,20 +445,31 @@ footer p {
     width: 24px;
   }
   .manage-book .card {
-    flex-basis: 90%;
+    flex-basis: 100%;
   }
   .search-container {
-    width: 90%;
-  }
-  .card .mini-card .card-book .detail-book {
-    line-height: 2.2rem;
+    width: 100%;
   }
   .card .mini-card .card-book .detail-book h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .card .mini-card .card-book .detail-book p {
-    font-size: 0.6rem;
-    line-height: 1.2rem;
+    font-size: 0.7rem;
+  }
+  .card-book .detail-book .action {
+    margin-top: 4rem;
+  }
+  .mini-card .card-book {
+    height: 180px;
+  }
+  .mini-card .card-book .cover {
+    width: 38%;
+  }
+  .mini-card .card-book .detail-book {
+    width: 62%;
+  }
+  .mini-card .card-book .action {
+    margin-top: 5.1rem;
   }
 }
 
@@ -452,12 +485,12 @@ footer p {
     font-size: 0.6rem;
   }
   .site-logo img {
-    height: 16px;
+    height: 18px;
   }
   nav.navbar a .feather-32,
   nav.navbar a img {
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
   }
   .manage-book {
     gap: 1rem;
@@ -466,7 +499,13 @@ footer p {
   .manage-book .card {
     padding: 1.5rem;
   }
-  .search-container {
-    width: 100%;
+  .mini-card .card-book {
+    height: 150px;
+  }
+  .mini-card .card-book .cover {
+    width: 42%;
+  }
+  .mini-card .card-book .detail-book {
+    width: 58%;
   }
 }
