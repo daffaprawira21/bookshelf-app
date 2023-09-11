@@ -308,7 +308,7 @@ form .input input {
 .card-book .detail-book .action {
   display: flex;
   justify-content: flex-end;
-  margin-top: 5rem;
+  margin-top: 2rem;
   gap: 0.5rem;
 }
 
@@ -338,6 +338,66 @@ form .input input {
 .action .btn-remove {
   color: red;
 }
+
+.edit-book {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(0.5rem);
+}
+.edit-book form {
+  height: fit-content;
+  width: 30%;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  height: fit-content;
+  background-color: #131313;
+  color: #eee0c9;
+  font-family: var(--ff-poppins);
+}
+.edit-book form input {
+  font-size: 1rem;
+  padding: 0 0 0 0.5rem;
+  color: #eee0c9;
+  margin: 0;
+}
+.edit-book form h3 {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.edit-book form label {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.edit-book form button {
+  padding: 0.4rem 1.8rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #eee0c9;
+  transition: 0.25s ease;
+}
+.edit-book form button:hover {
+  background-color: #262626;
+  color: #eee0c9;
+}
+.container-edit-btn {
+  display: flex;
+  width: 100%;
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 /* Footer Section */
 footer {
   display: flex;
@@ -388,6 +448,9 @@ footer p {
   .search-container {
     width: 60%;
   }
+  .edit-book form {
+    width: 40%;
+  }
 }
 
 /* Media Query Max 992px */
@@ -413,6 +476,9 @@ footer p {
   .mini-card .card-book .detail-book {
     width: 74%;
   }
+  .edit-book form {
+    width: 50%;
+  }
 }
 
 /* Media Query Max 768px */
@@ -437,6 +503,9 @@ footer p {
   }
   .mini-card .card-book .detail-book {
     width: 70%;
+  }
+  .edit-book form {
+    width: 60%;
   }
 }
 
@@ -472,9 +541,6 @@ footer p {
   .card .mini-card .card-book .detail-book p {
     font-size: 0.7rem;
   }
-  .card-book .detail-book .action {
-    margin-top: 4rem;
-  }
   .mini-card .card-book {
     height: 180px;
   }
@@ -484,8 +550,8 @@ footer p {
   .mini-card .card-book .detail-book {
     width: 62%;
   }
-  .mini-card .card-book .action {
-    margin-top: 5.1rem;
+  .edit-book form {
+    width: 70%;
   }
 }
 
@@ -501,14 +567,6 @@ footer p {
     font-size: 0.9rem;
     line-height: 2.4rem;
   }
-  /* .site-logo img {
-    height: 20px;
-  }
-  nav.navbar a .feather-32,
-  nav.navbar a img {
-    height: 20px;
-    width: 20px;
-  } */
   .manage-book {
     gap: 1rem;
     padding: 2rem;
@@ -524,5 +582,8 @@ footer p {
   }
   .mini-card .card-book .detail-book {
     width: 58%;
+  }
+  .edit-book form {
+    width: 80%;
   }
 }

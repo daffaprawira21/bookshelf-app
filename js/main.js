@@ -37,12 +37,23 @@ function generateId() {
   return +new Date();
 }
 
-function generateBookObject(id, title, author, year, cover, isCompleted) {
+function generateBookObject(
+  id,
+  title,
+  author,
+  year,
+  page,
+  language,
+  cover,
+  isCompleted
+) {
   return {
     id,
     title,
     author,
     year,
+    page,
+    language,
     cover,
     isCompleted,
   };
@@ -68,6 +79,8 @@ function addBook() {
   const getTitle = document.getElementById("input-title").value;
   const getAuthor = document.getElementById("input-author").value;
   const getYear = document.getElementById("input-year").value;
+  const getPage = document.getElementById("input-page").value;
+  const getlanguage = document.getElementById("input-language").value;
   const getCover = document.getElementById("input-link").value;
   const isChecked = checkStatusBook();
 
@@ -77,6 +90,8 @@ function addBook() {
     getTitle,
     getAuthor,
     getYear,
+    getPage,
+    getlanguage,
     getCover,
     isChecked
   );
@@ -85,7 +100,24 @@ function addBook() {
   saveData();
 }
 
-// button-function
+function findBook(bookId) {
+  for (const bookItem of books) {
+    if (bookItem.id == bookId) {
+      return bookItem;
+    }
+  }
+  return null;
+}
+
+function findBookIndex(bookId) {
+  for (const index in books) {
+    if (books[index].id === bookId) {
+      return index;
+    }
+  }
+  return -1;
+}
+
 function addBookToCompleted(bookId) {
   const bookTarget = findBook(bookId);
   if (bookTarget == null) return;
@@ -111,35 +143,70 @@ function removeBookFromCompleted(bookId) {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
+// ------------------------------------------------------------------
+function editBook(bookId) {
+  bookTarget = findBookIndex(bookId);
 
-function findBook(bookId) {
-  for (const bookItem of books) {
-    if (bookItem.id == bookId) {
-      return bookItem;
-    }
-  }
-  return null;
+  const sectionEdit = document.querySelector(".edit-book");
+  sectionEdit.style.display = "flex";
+  const editTitle = document.getElementById("edit-title");
+  const editAuthor = document.getElementById("edit-author");
+  const editYear = document.getElementById("edit-year");
+  const editPage = document.getElementById("edit-page");
+  const editLanguage = document.getElementById("edit-language");
+  const editCover = document.getElementById("edit-cover");
+  const formEditBook = document.getElementById("edit-book");
+  const cancelEdit = document.getElementById("cancel-edit");
+  const saveEdit = document.getElementById("save-edit");
+
+  editTitle.setAttribute("value", books[bookTarget].title);
+  editAuthor.setAttribute("value", books[bookTarget].author);
+  editYear.setAttribute("value", books[bookTarget].year);
+  editPage.setAttribute("value", books[bookTarget].page);
+  editLanguage.setAttribute("value", books[bookTarget].language);
+  editCover.setAttribute("value", books[bookTarget].cover);
+
+  saveEdit.addEventListener("click", function (event) {
+    books[bookTarget].title = editTitle.value;
+    books[bookTarget].author = editAuthor.value;
+    books[bookTarget].year = editYear.value;
+    books[bookTarget].page = editPage.value;
+    books[bookTarget].language = editLanguage.value;
+    books[bookTarget].cover = editCover.value;
+
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
+    formEditBook.reset();
+    sectionEdit.style.display = "none";
+  });
+
+  cancelEdit.addEventListener("click", function (event) {
+    event.preventDefault();
+    sectionEdit.style.display = "none";
+    formEditBook.reset();
+  });
 }
-
-function findBookIndex(bookId) {
-  for (const index in books) {
-    if (books[index].id === bookId) {
-      return index;
-    }
-  }
-  return -1;
-}
-
+// ------------------------------------------------------------------
 function makeBook(bookObject) {
   const createTitle = document.createElement("h3");
   createTitle.innerText = bookObject.title;
   const createAuthor = document.createElement("p");
-  createAuthor.innerText = bookObject.author;
+  createAuthor.innerText = `Author : ${bookObject.author}`;
   const createYear = document.createElement("p");
-  createYear.innerText = bookObject.year;
+  createYear.innerText = `Year : ${bookObject.year}`;
+  const createPage = document.createElement("p");
+  createPage.innerText = `Page : ${bookObject.page}`;
+  const createLanguage = document.createElement("p");
+  createLanguage.innerText = `Language : ${bookObject.language}`;
   const containerBookDetail = document.createElement("div");
   containerBookDetail.classList.add("detail-book");
-  containerBookDetail.append(createTitle, createAuthor, createYear);
+  containerBookDetail.append(
+    createTitle,
+    createAuthor,
+    createYear,
+    createPage,
+    createLanguage
+  );
 
   const createCover = document.createElement("img");
   createCover.src = bookObject.cover;
@@ -174,13 +241,19 @@ function makeBook(bookObject) {
   checkButton.addEventListener("click", function () {
     addBookToCompleted(bookObject.id);
   });
+  const editButton = document.createElement("button");
+  editButton.classList.add("btn-edit");
+  editButton.append(editIcon);
+  editButton.addEventListener("click", function () {
+    editBook(bookObject.id);
+  });
 
   const containerButton = document.createElement("div");
   containerButton.classList.add("action");
   if (bookObject.isCompleted) {
-    containerButton.append(undoButton, removeButton);
+    containerButton.append(undoButton, editButton, removeButton);
   } else {
-    containerButton.append(checkButton, removeButton);
+    containerButton.append(checkButton, editButton, removeButton);
   }
   containerBookDetail.append(containerButton);
 

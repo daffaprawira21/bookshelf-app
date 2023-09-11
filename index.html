@@ -105,15 +105,28 @@
               />
             </div>
             <div class="input">
-              <label for="input-link">Book cover link</label>
+              <label for="input-page">Page</label>
+              <input id="input-page" type="number" placeholder="96" required />
+            </div>
+            <div class="input">
+              <label for="input-language">Language</label>
               <input
-                id="input-link"
+                id="input-language"
                 type="text"
-                placeholder="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
+                placeholder="English"
                 required
               />
             </div>
-            <div class="input_inline">
+            <div class="input">
+              <label for="input-link">Book Cover</label>
+              <input
+                id="input-link"
+                type="text"
+                placeholder="https://bookcover.com/id/img.webp"
+                required
+              />
+            </div>
+            <div class="check-box">
               <input id="inputBookIsComplete" type="checkbox" />
               <label for="inputBookIsComplete">Already read?</label>
             </div>
@@ -125,15 +138,13 @@
           <div class="mini-card" id="books">
             <!-- <div id="book-<book_id>" class="card-book">
               <div class="cover">
-                <img
-                  src="https://glints.com/id/lowongan/wp-content/uploads/2022/07/buku-ikigai-1-215x300.webp"
-                  alt="Avatar"
-                />
+                <img/>
               </div>
               <div class="detail-book">
-                <h3>Ikigai</h3>
-                <p>Author: Naruto</p>
-                <p>Year: 2024</p>
+                <h3>Judul</h3>
+                <p>Author</p>
+                <p>Year</p>
+                .........
                 <div class="action">
                   <button class="btn-edit btn-icon">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -155,6 +166,40 @@
             <!-- completed book list -->
           </div>
         </div>
+      </section>
+
+      <section class="edit-book">
+        <form id="editData">
+          <h3>Edit Book</h3>
+          <div class="input">
+            <label for="edit-title">Judul</label>
+            <input id="edit-title" type="text" required />
+          </div>
+          <div class="input">
+            <label for="edit-author">Author</label>
+            <input id="edit-author" type="text" required />
+          </div>
+          <div class="input">
+            <label for="edit-year">Year</label>
+            <input id="edit-year" type="number" required />
+          </div>
+          <div class="input">
+            <label for="edit-page">Page</label>
+            <input id="edit-page" type="number" required />
+          </div>
+          <div class="input">
+            <label for="edit-language">Language</label>
+            <input id="edit-language" type="text" required />
+          </div>
+          <div class="input">
+            <label for="edit-cover">Book Cover</label>
+            <input id="edit-cover" type="text" required />
+          </div>
+          <div class="container-edit-btn">
+            <button id="cancel-edit">Cancel</button>
+            <button id="save-edit" type="submit">Save</button>
+          </div>
+        </form>
       </section>
     </main>
     <footer>
