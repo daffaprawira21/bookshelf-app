@@ -30,9 +30,6 @@
         <img src="img/logo-black.png" alt="site logo" />
       </div>
       <nav class="navbar">
-        <a href="#" id="light-mode"
-          ><i class="feather-32" data-feather="sun"></i
-        ></a>
         <a href="https://github.com/daffaprawira21" id="github" target="_blank"
           ><img src="img/icons8-github-32.png" alt="github"
         /></a>
@@ -54,23 +51,21 @@
         </div>
       </section>
 
-      <section class="menu">
-        <!-- <div class="new-btn">
-          <button class="btn new">
-            <i class="fa-solid fa-plus"></i> New Book
-          </button>
-        </div> -->
-        <div class="search-container">
+      <section class="search-container">
+        <form id="searchBook">
+          <label for="search-input"></label>
           <input
             type="text"
             name="search"
-            placeholder="Search..."
+            placeholder="Search title..."
             class="search-input"
+            id="search-input"
+            autocomplete="off"
           />
-          <a href="#" class="search-btn">
+          <button id="searchSubmit" type="submit" class="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
-          </a>
-        </div>
+          </button>
+        </form>
       </section>
 
       <section class="manage-book" id="manage-book">
@@ -83,6 +78,7 @@
                 id="input-title"
                 type="text"
                 placeholder="Ikigai"
+                autocomplete="off"
                 required
               />
             </div>
@@ -92,6 +88,7 @@
                 id="input-author"
                 type="text"
                 placeholder="Hector Garcia"
+                autocomplete="off"
                 required
               />
             </div>
@@ -101,12 +98,19 @@
                 id="input-year"
                 type="number"
                 placeholder="2016"
+                autocomplete="off"
                 required
               />
             </div>
             <div class="input">
               <label for="input-page">Page</label>
-              <input id="input-page" type="number" placeholder="96" required />
+              <input
+                id="input-page"
+                type="number"
+                placeholder="96"
+                autocomplete="off"
+                required
+              />
             </div>
             <div class="input">
               <label for="input-language">Language</label>
@@ -114,6 +118,7 @@
                 id="input-language"
                 type="text"
                 placeholder="English"
+                autocomplete="off"
                 required
               />
             </div>
@@ -123,6 +128,8 @@
                 id="input-link"
                 type="text"
                 placeholder="https://bookcover.com/id/img.webp"
+                value="https://t.ly/hLlA2"
+                autocomplete="off"
                 required
               />
             </div>
@@ -136,28 +143,7 @@
         <div class="card">
           <h2>Book List</h2>
           <div class="mini-card" id="books">
-            <!-- <div id="book-<book_id>" class="card-book">
-              <div class="cover">
-                <img/>
-              </div>
-              <div class="detail-book">
-                <h3>Judul</h3>
-                <p>Author</p>
-                <p>Year</p>
-                .........
-                <div class="action">
-                  <button class="btn-edit btn-icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  </button>
-                  <button class="btn-check btn-icon">
-                    <i class="fa-solid fa-check"></i>
-                  </button>
-                  <button class="btn-remove btn-icon">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </div> -->
+            <!-- uncompleted book list -->
           </div>
         </div>
         <div class="card">
@@ -173,31 +159,31 @@
           <h3>Edit Book</h3>
           <div class="input">
             <label for="edit-title">Judul</label>
-            <input id="edit-title" type="text" required />
+            <input id="edit-title" type="text" autocomplete="off" required />
           </div>
           <div class="input">
             <label for="edit-author">Author</label>
-            <input id="edit-author" type="text" required />
+            <input id="edit-author" type="text" autocomplete="off" required />
           </div>
           <div class="input">
             <label for="edit-year">Year</label>
-            <input id="edit-year" type="number" required />
+            <input id="edit-year" type="number" autocomplete="off" required />
           </div>
           <div class="input">
             <label for="edit-page">Page</label>
-            <input id="edit-page" type="number" required />
+            <input id="edit-page" type="number" autocomplete="off" required />
           </div>
           <div class="input">
             <label for="edit-language">Language</label>
-            <input id="edit-language" type="text" required />
+            <input id="edit-language" type="text" autocomplete="off" required />
           </div>
           <div class="input">
             <label for="edit-cover">Book Cover</label>
-            <input id="edit-cover" type="text" required />
+            <input id="edit-cover" type="text" autocomplete="off" required />
           </div>
           <div class="container-edit-btn">
             <button id="cancel-edit">Cancel</button>
-            <button id="save-edit" type="submit" onclick="">Save</button>
+            <button id="save-edit" type="submit">Save</button>
           </div>
         </form>
       </section>
@@ -209,7 +195,7 @@
       feather.replace();
     </script>
     <!-- sweetalert cdn -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <!-- javascript -->
     <script src="js/main.js"></script>
   </body>

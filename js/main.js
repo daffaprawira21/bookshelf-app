@@ -2,8 +2,11 @@ const books = [];
 const RENDER_EVENT = "render-book";
 const SAVED_EVENT = "saved-book";
 const STORAGE_KEY = "BOOK_APPS";
+const searchFormSubmit = document.getElementById("searchBook");
+const inputSearchTitle = document.getElementById("search-input");
 
-function isStorageExist() /* boolean */ {
+// check web storage browser support
+function isStorageExist() {
   if (typeof Storage === undefined) {
     alert("Browser kamu tidak mendukung local storage");
     return false;
@@ -11,17 +14,53 @@ function isStorageExist() /* boolean */ {
   return true;
 }
 
+// Load DOM content
 document.addEventListener("DOMContentLoaded", function () {
   const submitForm = document.getElementById("input-book");
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     addBook();
+    submitForm.reset();
   });
   if (isStorageExist()) {
     loadDataFromStorage();
   }
 });
 
+// Search book
+inputSearchTitle.addEventListener("keyup", function (event) {
+  event.preventDefault();
+  searchBook();
+});
+searchFormSubmit.addEventListener("submit", function (event) {
+  event.preventDefault();
+  searchBook();
+});
+function searchBook() {
+  const searchTitle = document
+    .getElementById("search-input")
+    .value.toLowerCase();
+  const unfinishedBook = document.getElementById("books");
+  unfinishedBook.innerHTML = "";
+  const finishedBook = document.getElementById("completedBook");
+  finishedBook.innerHTML = "";
+
+  for (const bookItem of books) {
+    const bookElement = makeBook(bookItem);
+    if (bookItem.title.toLowerCase().includes(searchTitle)) {
+      if (searchTitle == "") {
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        return;
+      } else if (!bookItem.isCompleted) {
+        unfinishedBook.append(bookElement);
+      } else {
+        finishedBook.append(bookElement);
+      }
+    }
+  }
+}
+
+// Load data from local
 function loadDataFromStorage() {
   const serializedData = localStorage.getItem(STORAGE_KEY);
   let data = JSON.parse(serializedData);
@@ -33,18 +72,12 @@ function loadDataFromStorage() {
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
-function removeHash() {
-  history.pushState(
-    "",
-    document.title,
-    window.location.pathname + window.location.search
-  );
-}
-
+// Generate id
 function generateId() {
   return +new Date();
 }
 
+// Create book object
 function generateBookObject(
   id,
   title,
@@ -67,6 +100,7 @@ function generateBookObject(
   };
 }
 
+// Check book status
 function checkStatusBook() {
   const isCheckComplete = document.getElementById("inputBookIsComplete");
   if (isCheckComplete.checked) {
@@ -75,6 +109,7 @@ function checkStatusBook() {
   return false;
 }
 
+// Save data to local
 function saveData() {
   if (isStorageExist()) {
     const parsed = JSON.stringify(books);
@@ -83,6 +118,7 @@ function saveData() {
   }
 }
 
+// Adding book
 function addBook() {
   const getTitle = document.getElementById("input-title").value;
   const getAuthor = document.getElementById("input-author").value;
@@ -106,8 +142,18 @@ function addBook() {
   books.push(bookObject);
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
+
+  swal({
+    position: "bottom-end",
+    type: "success",
+    title: "Your book has been saved",
+    background: "black",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
 
+// Find books[] id
 function findBook(bookId) {
   for (const bookItem of books) {
     if (bookItem.id == bookId) {
@@ -117,6 +163,7 @@ function findBook(bookId) {
   return null;
 }
 
+// find books[] index
 function findBookIndex(bookId) {
   for (const index in books) {
     if (books[index].id === bookId) {
@@ -126,6 +173,7 @@ function findBookIndex(bookId) {
   return -1;
 }
 
+// Button function
 function addBookToCompleted(bookId) {
   const bookTarget = findBook(bookId);
   if (bookTarget == null) return;
@@ -135,26 +183,19 @@ function addBookToCompleted(bookId) {
 }
 function undoBookFromCompleted(bookId) {
   const bookTarget = findBook(bookId);
-
   if (bookTarget == null) return;
-
   bookTarget.isCompleted = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
 function removeBookFromCompleted(bookId) {
   const bookTarget = findBookIndex(bookId);
-
-  if (bookTarget === -1) return;
-
   books.splice(bookTarget, 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
-// ------------------------------------------------------------------
 function editBook(bookId) {
   bookTarget = findBookIndex(bookId);
-
   const sectionEdit = document.querySelector(".edit-book");
   sectionEdit.style.display = "flex";
   const editTitle = document.getElementById("edit-title");
@@ -163,7 +204,7 @@ function editBook(bookId) {
   const editPage = document.getElementById("edit-page");
   const editLanguage = document.getElementById("edit-language");
   const editCover = document.getElementById("edit-cover");
-  const formEditBook = document.getElementById("edit-book");
+  // const formEditBook = document.getElementById("edit-book");
   const cancelEdit = document.getElementById("cancel-edit");
   const saveEdit = document.getElementById("save-edit");
 
@@ -175,6 +216,7 @@ function editBook(bookId) {
   editCover.setAttribute("value", books[bookTarget].cover);
 
   saveEdit.addEventListener("click", function (event) {
+    event.preventDefault();
     books[bookTarget].title = editTitle.value;
     books[bookTarget].author = editAuthor.value;
     books[bookTarget].year = editYear.value;
@@ -182,19 +224,28 @@ function editBook(bookId) {
     books[bookTarget].language = editLanguage.value;
     books[bookTarget].cover = editCover.value;
 
+    swal({
+      position: "bottom-end",
+      type: "success",
+      title: "Your book has been saved",
+      background: "black",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
-    removeHash();
     sectionEdit.style.display = "none";
   });
 
   cancelEdit.addEventListener("click", function (event) {
     event.preventDefault();
+    // formEditBook.reset();
     sectionEdit.style.display = "none";
-    formEditBook.reset();
   });
 }
-// ------------------------------------------------------------------
+
+// Create html element to show a book list
 function makeBook(bookObject) {
   const createTitle = document.createElement("h3");
   createTitle.innerText = bookObject.title;
@@ -218,6 +269,7 @@ function makeBook(bookObject) {
 
   const createCover = document.createElement("img");
   createCover.src = bookObject.cover;
+
   const containerBookCover = document.createElement("div");
   containerBookCover.classList.add("cover");
   containerBookCover.append(createCover);
@@ -272,6 +324,7 @@ function makeBook(bookObject) {
   return containerBook;
 }
 
+// Custom render event
 document.addEventListener(RENDER_EVENT, function () {
   const unfinishedBook = document.getElementById("books");
   unfinishedBook.innerHTML = "";
@@ -289,6 +342,7 @@ document.addEventListener(RENDER_EVENT, function () {
   }
 });
 
+// Custom saved event
 document.addEventListener(SAVED_EVENT, function () {
   console.log(localStorage.getItem(STORAGE_KEY));
 });
